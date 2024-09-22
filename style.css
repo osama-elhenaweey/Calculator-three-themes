@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+/* Global variables */
+:root {
+    /* Default (light theme) variables */
+    --bg-color: white;
+    --text-color: black;
+}
+
+/* Theme 1: Dark blue and red theme */
+.light-theme {
+    --bg-color: hsl(222, 26%, 31%);
+    --toggle-bg-color: hsl(223, 31%, 20%);
+    --screen-bg-color: hsl(224, 36%, 15%);
+    --key-bg-color: hsl(225, 21%, 49%);
+    --key-shadow-color: hsl(224, 28%, 35%);
+    --toggle-key-bg-color: hsl(6, 63%, 50%);
+    --toggle-key-shadow-color: hsl(6, 70%, 34%);
+    --key-light-bg-color: hsl(30, 25%, 89%);
+    --key-light-shadow-color: hsl(28, 16%, 65%);
+    --text-color: hsl(0, 0%, 100%);
+    --alt-text-color: hsl(221, 14%, 31%);
+}
+
+/* Theme 2: Light gray and orange theme */
+.dark-theme {
+    --bg-color: hsl(0, 0%, 90%);
+    --toggle-bg-color: hsl(0, 5%, 81%);
+    --screen-bg-color: hsl(0, 5%, 81%);
+    --key-bg-color: hsl(185, 42%, 37%);
+    --key-shadow-color: hsl(185, 58%, 25%);
+    --toggle-key-bg-color: hsl(25, 98%, 40%);
+    --toggle-key-shadow-color: hsl(25, 99%, 27%);
+    --key-light-bg-color: hsl(45, 7%, 89%);
+    --key-light-shadow-color: hsl(35, 11%, 61%);
+    --text-color: hsl(60, 10%, 19%);
+    --alt-text-color: hsl(60, 10%, 19%);
+}
+
+/* Theme 3: Violet and cyan theme */
+.third-theme {
+    --bg-color: hsl(268, 75%, 9%);
+    --toggle-bg-color: hsl(268, 71%, 12%);
+    --screen-bg-color: hsl(268, 71%, 12%);
+    --key-bg-color: hsl(281, 89%, 26%);
+    --key-shadow-color: hsl(285, 91%, 52%);
+    --toggle-key-bg-color: hsl(176, 100%, 44%);
+    --toggle-key-shadow-color: hsl(177, 92%, 70%);
+    --key-light-bg-color: hsl(268, 47%, 21%);
+    --key-light-shadow-color: hsl(290, 70%, 36%);
+    --text-color: hsl(52, 100%, 62%);
+    --alt-text-color: hsl(52, 100%, 62%);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    box-sizing: border-box;
+    font-size: 62.25%;
+    font-family: "League Spartan", sans-serif;
+}
+/* Apply the current theme colors */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "League Spartan", sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.theme-toggle {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+    /* color: white; */
+}
+
+.toggle-container {
+    position: relative;
+    width: 120px;
+    height: 30px;
+    background-color: var(--toggle-bg-color);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.theme-options {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    top: -20px;
+}
+
+.theme-label {
+    color: var(--text-color);
+    font-size: 12px;
+    position: relative;
+    width: 33%;
+    text-align: center;
+}
+
+.theme-circle {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: var(--toggle-key-bg-color);
+    border-radius: 50%;
+    transition: transform 0.3s;
+    z-index: 10;
+}
+/* theme end */
+.container {
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+}
+header span {
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+.result {
+    background-color: var(--screen-bg-color);
+    width: 100%;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+}
+.calc-content {
+    background-color: var(--screen-bg-color);
+    width: 100%;
+    padding: 3rem 1rem;
+    border-radius: 20px;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0;
+    row-gap: 2rem;
+}
+.calc-content span {
+    justify-self: center;
+    align-self: center;
+    background-color: var(--key-light-bg-color);
+    color: var(--alt-text-color);
+    border-bottom: 3px solid var(--key-shadow-color);
+    padding: 1.4rem 3.6rem;
+    border-radius: 5px;
+    /* transition: all 1s ease-in; */
+    cursor: pointer;
+}
+.calc-content span:hover {
+    border-bottom: 2px solid var(--key-shadow-color);
+}
+.calc-content .reset {
+    grid-column: 1/3;
+
+    padding: 1.4rem 5.6rem;
+    border-radius: 5px;
+}
+.calc-content .reset,
+.calc-content .del {
+    background-color: var(--key-bg-color);
+    color: #fff;
+
+    font-size: 2.4rem;
+}
+.calc-content .equal {
+    grid-column: 3/-1;
+    background-color: var(--toggle-key-bg-color);
+    color: var(--toggle-bg-color);
+    padding: 1.4rem 8.6rem;
+    border-radius: 5px;
+    border-bottom: 3px solid var(--toggle-key-shadow-color);
+}
+.calc-content .equal:hover {
+    border-bottom: 2px solid var(--toggle-key-shadow-color);
+}
+@media screen and (width<510px) {
+    html {
+        font-size: 58%;
+    }
+    .container {
+        max-width: 400px;
+        margin-inline: auto;
+    }
+}
+@media screen and (width<410px) {
+    html {
+        font-size: 42%;
+    }
+    .container {
+        max-width: 300px;
+        margin-inline: auto;
+    }
+}
